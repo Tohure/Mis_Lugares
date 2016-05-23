@@ -1,5 +1,6 @@
 package com.example.mislugares;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,8 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button bAcercaDe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +34,25 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        bAcercaDe = (Button) findViewById(R.id.button03);
+        bAcercaDe.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                lanzarAcercaDe(null);
+            }
+        });
+
+
+    }
+
+    public void salir(View view){
+        finish();
+    }
+
+    public void lanzarAcercaDe(View view){
+        Intent i = new Intent(this, AcercaDeActivity.class);
+        startActivity(i);
     }
 
 
-    int drawable = android.R.drawable.stat_sys_upload;
 }
