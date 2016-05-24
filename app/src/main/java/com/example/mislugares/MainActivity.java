@@ -41,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void salir(View view){
-        finish();
-    }
+    public void salir(View view){ finish(); }
 
     public void lanzarAcercaDe(View view){
         Intent i = new Intent(this, AcercaDeActivity.class);
@@ -51,4 +49,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void lanzarPreferencias(View view){
+        Intent i = new Intent(this, PreferenciasActivity.class);
+        startActivity(i);
+    }
 }

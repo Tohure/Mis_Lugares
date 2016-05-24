@@ -23,6 +23,7 @@
                 android:id="@+id/button02"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="lanzarPreferencias"
                 android:text="Preferencias" />
         </TableRow>
         <TableRow>

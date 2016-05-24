@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="preferencias_principal">
+    <CheckBoxPreference
+        android:key="notificaciones"
+        android:summary="Notificar si estamos cerca de un lugar"
+        android:title="Mandar notificaciones" />
+    <EditTextPreference
+        android:defaultValue="12"
+        android:key="maximo"
+        android:summary="Distancia mínima (Km) para notificar"
+        android:title="Distancia para notificar" />
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/tiposOrden"
+        android:entryValues="@array/tiposOrdenValores"
+        android:key="orden"
+        android:summary="Que lugares quieres que aparezcan antes"
+        android:title="Criterio de ordenación" />
+    <PreferenceScreen android:title="Notificaciones por correo">
+        <CheckBoxPreference
+            android:key="notificaciones"
+            android:summary="Notificar si estamos cerca de un lugar"
+            android:title="Mandar notificaciones" />
+        <EditTextPreference
+            android:defaultValue="12"
+            android:key="maximo"
+            android:summary="Distancia mínima (Km) para notificar"
+            android:title="Distancia para notificar" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/tiposOrden"
+            android:entryValues="@array/tiposOrdenValores"
+            android:key="orden"
+            android:summary="Que lugares quieres que aparezcan antes"
+            android:title="Criterio de ordenación" />
+    </PreferenceScreen>
+    <PreferenceCategory android:title="Notificaciones Gamer">
+        <CheckBoxPreference
+            android:key="notificaciones"
+            android:summary="Notificar si estamos cerca de un lugar"
+            android:title="Mandar notificaciones" />
+        <EditTextPreference
+            android:defaultValue="12"
+            android:key="maximo"
+            android:summary="Distancia mínima (Km) para notificar"
+            android:title="Distancia para notificar" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/tiposOrden"
+            android:entryValues="@array/tiposOrdenValores"
+            android:key="orden"
+            android:summary="Que lugares quieres que aparezcan antes"
+            android:title="Criterio de ordenación" />
+    </PreferenceCategory>
+</PreferenceScreen>
