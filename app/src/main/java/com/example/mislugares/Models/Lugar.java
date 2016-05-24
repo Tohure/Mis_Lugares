@@ -1,4 +1,4 @@
-package com.example.mislugares;
+package com.example.mislugares.Models;
 
 public class Lugar {
 

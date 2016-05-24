@@ -26,6 +26,8 @@
             android:label="Preferencias"/>
         <activity android:name=".VistaLugarActivity"
             android:label="Vista de Lugares"/>
+        <activity android:name=".EdicionLugarActivity"
+            android:label="Editar lugar"/>
     </application>
 
 </manifest>

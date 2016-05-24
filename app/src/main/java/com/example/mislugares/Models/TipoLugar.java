@@ -1,4 +1,6 @@
-package com.example.mislugares;
+package com.example.mislugares.Models;
+
+import com.example.mislugares.R;
 
 public enum TipoLugar {
     OTROS("Otros", R.drawable.otros),

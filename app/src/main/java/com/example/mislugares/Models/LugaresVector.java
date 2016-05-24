@@ -1,4 +1,4 @@
-package com.example.mislugares;
+package com.example.mislugares.Models;
 
 import java.util.ArrayList;
 import java.util.List;

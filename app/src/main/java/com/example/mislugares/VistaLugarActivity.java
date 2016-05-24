@@ -1,10 +1,17 @@
 package com.example.mislugares;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.example.mislugares.Models.Lugar;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -63,10 +70,49 @@ public class VistaLugarActivity extends AppCompatActivity {
         valoracion.setOnRatingBarChangeListener(
                 new RatingBar.OnRatingBarChangeListener() {
                     @Override
-                    public void onRatingChanged(RatingBar ratingBar,
-                                                float valor, boolean fromUser) {
+                    public void onRatingChanged(RatingBar ratingBar, float valor, boolean fromUser) {
                         lugar.setValoracion(valor);
                     }
                 });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.vista_lugar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.accion_compartir:
+                return true;
+            case R.id.accion_llegar:
+                return true;
+            case R.id.accion_editar:
+                Intent i = new Intent(VistaLugarActivity.this, EdicionLugarActivity.class);
+                i.putExtra("id", id);
+                startActivity(i);
+                return true;
+            case R.id.accion_borrar:
+                borrarLugar((int) id);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void borrarLugar(final int id) {
+        new AlertDialog.Builder(this)
+                .setTitle("Borrar Lugar")
+                .setMessage("Desea borrar este lugar?")
+                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        MainActivity.lugares.borrar(id);
+                        finish();
+                    }})
+                .setNegativeButton("No", null)
+                .show();
+
     }
 }

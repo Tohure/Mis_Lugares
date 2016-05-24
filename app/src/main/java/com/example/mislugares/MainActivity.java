@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.mislugares.Models.Lugares;
+import com.example.mislugares.Models.LugaresVector;
+
 public class MainActivity extends AppCompatActivity {
 
     public static Lugares lugares = new LugaresVector();
