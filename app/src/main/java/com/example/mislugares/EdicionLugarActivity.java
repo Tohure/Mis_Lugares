@@ -1,12 +1,16 @@
 package com.example.mislugares;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.mislugares.Models.Lugar;
-
+import com.example.mislugares.Models.TipoLugar;
 
 
 public class EdicionLugarActivity extends AppCompatActivity{
@@ -50,5 +54,37 @@ public class EdicionLugarActivity extends AppCompatActivity{
         assert comentario != null;
         comentario.setText(lugar.getComentario());
 
+        tipo = (Spinner) findViewById(R.id.tipo);
+        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, TipoLugar.getNombres());
+        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        tipo.setAdapter(adaptador);
+        tipo.setSelection(lugar.getTipo().ordinal());
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.editar_lugar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.accion_save:
+                lugar.setNombre(nombre.getText().toString());
+                lugar.setTipo(TipoLugar.values()[tipo.getSelectedItemPosition()]);
+                lugar.setDireccion(direccion.getText().toString());
+                lugar.setTelefono(Integer.parseInt(telefono.getText().toString()));
+                lugar.setUrl(url.getText().toString());
+                lugar.setComentario(comentario.getText().toString());
+                MainActivity.lugares.actualiza((int) id,lugar);
+                finish();
+                return true;
+            case R.id.accion_cancel:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
