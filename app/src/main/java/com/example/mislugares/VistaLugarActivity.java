@@ -1,9 +1,12 @@
 package com.example.mislugares;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -15,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.mislugares.Models.Lugar;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -22,9 +26,10 @@ public class VistaLugarActivity extends AppCompatActivity {
     private long id;
     private Lugar lugar;
     private ImageView imageView;
-    final static int RESULTADO_EDITAR= 1;
-    final static int RESULTADO_GALERIA= 2;
-    final static int RESULTADO_FOTO= 3;
+    private Uri uriFoto;
+    final static int RESULTADO_EDITAR = 1;
+    final static int RESULTADO_GALERIA = 2;
+    final static int RESULTADO_FOTO = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +37,14 @@ public class VistaLugarActivity extends AppCompatActivity {
         setContentView(R.layout.vista_lugar);
         Bundle extras = getIntent().getExtras();
         id = extras.getLong("id", -1);
-
+        imageView = (ImageView) findViewById(R.id.foto);
         actualizarVistas();
 
+    }
+
+    public void galeria(View view) {
+        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, RESULTADO_GALERIA);
     }
 
     private void actualizarVistas() {
@@ -86,6 +96,8 @@ public class VistaLugarActivity extends AppCompatActivity {
                         lugar.setValoracion(valor);
                     }
                 });
+
+        ponerFoto(imageView, lugar.getFoto());
     }
 
     @Override
@@ -109,7 +121,7 @@ public class VistaLugarActivity extends AppCompatActivity {
             case R.id.accion_editar:
                 Intent i = new Intent(VistaLugarActivity.this, EdicionLugarActivity.class);
                 i.putExtra("id", id);
-                startActivityForResult(i, 1234);
+                startActivityForResult(i, RESULTADO_EDITAR);
                 return true;
             case R.id.accion_borrar:
                 borrarLugar((int) id);
@@ -135,11 +147,38 @@ public class VistaLugarActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1234) {
+        if (requestCode == RESULTADO_EDITAR) {
             actualizarVistas();
             findViewById(R.id.scrollView1).invalidate();
+        } else if (requestCode == RESULTADO_GALERIA && resultCode == Activity.RESULT_OK) {
+            lugar.setFoto(data.getDataString());
+            ponerFoto(imageView, lugar.getFoto());
+        } else if(requestCode == RESULTADO_FOTO && resultCode == Activity.RESULT_OK && lugar!=null && uriFoto!=null) {
+            lugar.setFoto(uriFoto.toString());
+            ponerFoto(imageView, lugar.getFoto());
         }
     }
+
+    protected void ponerFoto(ImageView imageView, String uri) {
+        if (uri != null) {
+            imageView.setImageURI(Uri.parse(uri));
+        } else{
+            imageView.setImageBitmap(null);
+        }
+    }
+
+    public void eliminarFoto(View view) {
+        lugar.setFoto(null);
+        ponerFoto(imageView, null);
+    }
+
+    public void tomarFoto(View view) {
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        uriFoto = Uri.fromFile(new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)+ File.separator + "img_" + (System.currentTimeMillis() / 1000) + ".jpg"));
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, uriFoto);
+        startActivityForResult(intent, RESULTADO_FOTO);
+    }
+
 
     public void borrarLugar(final int id) {
         new AlertDialog.Builder(this)

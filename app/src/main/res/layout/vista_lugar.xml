@@ -2,11 +2,13 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView1"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/nombre"
             android:layout_width="match_parent"
@@ -15,101 +17,115 @@
             android:gravity="center"
             android:text="Nombres del lugar"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
         <LinearLayout
             android:id="@+id/barra_tipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
+
             <ImageView
                 android:id="@+id/logo_tipo"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:contentDescription="logo del tipo"
                 android:src="@drawable/otros" />
+
             <TextView
                 android:id="@+id/tipo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="tipo del lugar" />
+                android:text="tipo del lugar"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/barra_direccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
+
             <ImageView
                 android:id="@+id/logo_direccion"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:contentDescription="logo de la direccion"
                 android:src="@android:drawable/ic_menu_myplaces" />
+
             <TextView
                 android:id="@+id/direccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Manuel Irribaren 1198 Surquillo" />
+                android:text="Manuel Irribaren 1198 Surquillo"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/barra_telefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
+
             <ImageView
                 android:id="@+id/logo_telefono"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:contentDescription="logo del telefono"
                 android:src="@android:drawable/ic_menu_call" />
+
             <TextView
                 android:id="@+id/telefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="985585043" />
+                android:text="985585043"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/barra_url"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
+
             <ImageView
                 android:id="@+id/logo_url"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:contentDescription="logo del url"
                 android:src="@android:drawable/ic_menu_mapmode" />
+
             <TextView
                 android:id="@+id/url"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="http://rpp.pe" />
+                android:text="http://rpp.pe"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/barra_comentario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
+
             <ImageView
                 android:id="@+id/logo_comentario"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:contentDescription="logo del comentario"
                 android:src="@android:drawable/ic_menu_info_details" />
+
             <TextView
                 android:id="@+id/comentario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Linda ciudad" />
+                android:text="Linda ciudad"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 
         <LinearLayout
@@ -121,42 +137,46 @@
                 android:id="@+id/barra_fecha"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
                 <ImageView
                     android:id="@+id/logo_fecha"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:contentDescription="logo de fecha"
                     android:src="@android:drawable/ic_menu_my_calendar" />
+
                 <TextView
                     android:id="@+id/fecha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="22 Marzo 2016" />
+                    android:text="22 Marzo 2016"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/barra_hora"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
                 <ImageView
                     android:id="@+id/logo_hora"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:contentDescription="logo de hora"
                     android:src="@android:drawable/ic_menu_recent_history" />
+
                 <TextView
                     android:id="@+id/hora"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="21:00" />
+                    android:text="21:00"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
         </LinearLayout>
 
@@ -166,9 +186,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:rating="3" />
+
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
+
             <ImageView
                 android:id="@+id/foto"
                 android:layout_width="match_parent"
@@ -176,20 +198,32 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="fotografía"
                 android:src="@drawable/foto_epsg" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right" >
+                android:layout_gravity="right">
+
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:contentDescription="logo camara"
+                    android:onClick="tomarFoto"
                     android:src="@android:drawable/ic_menu_camera" />
+
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:contentDescription="logo galeria"
+                    android:onClick="galeria"
                     android:src="@android:drawable/ic_menu_gallery" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="Eliminar foto"
+                    android:onClick="eliminarFoto"
+                    android:src="@android:drawable/ic_menu_close_clear_cancel" />
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>
