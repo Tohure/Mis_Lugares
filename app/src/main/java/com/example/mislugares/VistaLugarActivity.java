@@ -2,11 +2,13 @@ package com.example.mislugares;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -19,6 +21,10 @@ import java.util.Date;
 public class VistaLugarActivity extends AppCompatActivity {
     private long id;
     private Lugar lugar;
+    private ImageView imageView;
+    final static int RESULTADO_EDITAR= 1;
+    final static int RESULTADO_GALERIA= 2;
+    final static int RESULTADO_FOTO= 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,8 +98,13 @@ public class VistaLugarActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.accion_compartir:
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, lugar.getNombre() + " - " + lugar.getUrl());
+                startActivity(intent);
                 return true;
             case R.id.accion_llegar:
+                verMapa();
                 return true;
             case R.id.accion_editar:
                 Intent i = new Intent(VistaLugarActivity.this, EdicionLugarActivity.class);
@@ -107,6 +118,20 @@ public class VistaLugarActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public void verMapa() {
+        Uri uri;
+        double lat = lugar.getPosicion().getLatitud();
+        double lon = lugar.getPosicion().getLongitud();
+        if (lat != 0 || lon != 0) {
+            uri = Uri.parse("geo:" + lat + "," + lon);
+        } else {
+            uri = Uri.parse("geo:0,0?q=" + lugar.getDireccion());
+        }
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -124,9 +149,9 @@ public class VistaLugarActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         MainActivity.lugares.borrar(id);
                         finish();
-                    }})
+                    }
+                })
                 .setNegativeButton("No", null)
                 .show();
-
     }
 }

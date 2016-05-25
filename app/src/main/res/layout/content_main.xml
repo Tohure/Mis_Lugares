@@ -15,36 +15,13 @@
         android:orientation="vertical"
         android:gravity="center_vertical|center_horizontal">
 
-        <Button
-            android:id="@+id/button01"
+        <android.support.v7.widget.RecyclerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="lanzarVistaLugar"
-            android:text="Mostrar Lugares"/>
-
-        <Button
-            android:id="@+id/button02"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="lanzarPreferencias"
-            android:layout_margin="10dp"
-            android:text="Preferencias"/>
-
-        <Button
-            android:id="@+id/button03"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Acerca de"/>
-
-        <Button
-            android:id="@+id/button04"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="salir"
-            android:text="Salir"/>
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>
