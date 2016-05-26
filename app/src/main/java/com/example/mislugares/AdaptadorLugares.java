@@ -27,7 +27,7 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
 
     //Creamos nuestro ViewHolder, con los tipos de elementos a modificar
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView nombre, direccion;
+        public TextView nombre, direccion,distancia;
         public ImageView foto;
         public RatingBar valoracion;
 
@@ -35,6 +35,7 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
             super(itemView);
             nombre = (TextView) itemView.findViewById(R.id.nombre);
             direccion = (TextView) itemView.findViewById(R.id.direccion);
+            distancia = (TextView) itemView.findViewById(R.id.distancia);
             foto = (ImageView) itemView.findViewById(R.id.foto);
             valoracion = (RatingBar) itemView.findViewById(R.id.valoracion);
         }
@@ -73,6 +74,17 @@ public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.View
             case DEPORTE:    id = R.drawable.deporte;     break;
             case NATURALEZA: id = R.drawable.naturaleza;  break;
             case GASOLINERA: id = R.drawable.gasolinera;  break;
+        }
+
+        if (MainActivity.posicionActual != null && lugar.getPosicion() != null) {
+
+            int d = (int) MainActivity.posicionActual.distancia(lugar.getPosicion());
+
+            if(d < 2000) {
+                holder.distancia.setText(d + " m");
+            } else {
+                holder.distancia.setText(d / 1000 + "Km");
+            }
         }
 
         holder.foto.setImageResource(id);
