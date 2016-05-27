@@ -1,4 +1,4 @@
-package com.example.mislugares;
+package com.example.mislugares.Data;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,8 +9,10 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.example.mislugares.MainActivity;
 import com.example.mislugares.Models.Lugar;
 import com.example.mislugares.Models.Lugares;
+import com.example.mislugares.R;
 
 public class AdaptadorLugares extends RecyclerView.Adapter<AdaptadorLugares.ViewHolder> {
     protected Lugares lugares;           //Lugares a mostrar

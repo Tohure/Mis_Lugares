@@ -21,14 +21,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.mislugares.Data.AdaptadorLugaresBD;
+import com.example.mislugares.Data.LugaresBD;
 import com.example.mislugares.Models.GeoPunto;
-import com.example.mislugares.Models.Lugares;
-import com.example.mislugares.Models.LugaresVector;
+
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
 
     private RecyclerView recyclerView;
-    public AdaptadorLugares adaptador;
 
     final static String TAG = "MisLugares";
     private static final long DOS_MINUTOS = 2 * 60 * 1000;
@@ -37,15 +37,18 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private Location mejorLocaliz;
     protected static GeoPunto posicionActual = new GeoPunto(0, 0);
 
-    public static Lugares lugares = new LugaresVector();
+    public static LugaresBD lugares;
+    public static AdaptadorLugaresBD adaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        lugares = new LugaresBD(this);
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        adaptador = new AdaptadorLugares(this, lugares);
+        adaptador = new AdaptadorLugaresBD(this, lugares, lugares.extraeCursor());
         recyclerView.setAdapter(adaptador);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);

@@ -3,6 +3,8 @@ package com.example.mislugares;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.mislugares.Fragments.PreferenciasFragment;
+
 public class PreferenciasActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
